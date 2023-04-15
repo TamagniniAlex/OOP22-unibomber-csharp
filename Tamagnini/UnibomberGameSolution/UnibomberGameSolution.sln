@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnibomberGame", "UnibomberGame\UnibomberGame.csproj", "{E6867035-8413-4981-B2EC-A1294E9D0DDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnibomberGame", "UnibomberGame\UnibomberGame.csproj", "{E6867035-8413-4981-B2EC-A1294E9D0DDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnibomberTests", "UnibomberTests\UnibomberTests.csproj", "{D71A73B0-639E-46FB-959A-A12EB639EDFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnibomberTests", "UnibomberTests\UnibomberTests.csproj", "{D71A73B0-639E-46FB-959A-A12EB639EDFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FDE998CB-A6A4-41E6-B962-AD4897BF969D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDE998CB-A6A4-41E6-B962-AD4897BF969D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDE998CB-A6A4-41E6-B962-AD4897BF969D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDE998CB-A6A4-41E6-B962-AD4897BF969D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6867035-8413-4981-B2EC-A1294E9D0DDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6867035-8413-4981-B2EC-A1294E9D0DDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6867035-8413-4981-B2EC-A1294E9D0DDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6867035-8413-4981-B2EC-A1294E9D0DDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D71A73B0-639E-46FB-959A-A12EB639EDFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D71A73B0-639E-46FB-959A-A12EB639EDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D71A73B0-639E-46FB-959A-A12EB639EDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D71A73B0-639E-46FB-959A-A12EB639EDFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
