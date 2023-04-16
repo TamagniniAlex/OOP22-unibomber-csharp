@@ -1,14 +1,14 @@
-namespace ecs
+namespace UnibomberGame
 {
     public interface IEntity
     {
-        ISet<IComponent> Components { get; }
+        HashSet<IComponent> Components { get; }
 
         Pair<float, float> Position { get; set; }
 
         T? GetComponent<T>() where T : IComponent;
 
-        IEntity AddComponent(IComponent component);
+        IEntity AddComponent(AbstractComponent component);
 
         Type Type { get; }
 

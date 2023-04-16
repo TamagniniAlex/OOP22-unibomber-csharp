@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace ecs
+namespace UnibomberGame
 {
     public class Entity : IEntity
     {
@@ -23,7 +23,7 @@ namespace ecs
             _components = new HashSet<IComponent>();
             _game = new List<IGame>();
             _game.Add(game);
-            Speed = 0.3;
+            Speed = 0.3F;
         }
 
         public HashSet<IComponent> Components
@@ -31,7 +31,7 @@ namespace ecs
             get { return new HashSet<IComponent>(_components); }
         }
 
-        public T? GetComponent<T> where T : IComponent
+        public T? GetComponent<T>() where T : IComponent
         {
             return _components.OfType<T>().FirstOrDefault();
         }
@@ -41,6 +41,11 @@ namespace ecs
             component.Entity = this;
             _components.Add(component);
             return this;
+        }
+
+        public IGame Game
+        {
+            get { return _game[0]; }
         }
     }
 }

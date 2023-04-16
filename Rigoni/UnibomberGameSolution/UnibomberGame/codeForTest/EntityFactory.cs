@@ -1,35 +1,34 @@
 using System;
 using UnibomberGame;
 
-namespace ecs;
-
-public class EntityFactory : IEntityFactory
+namespace UnibomberGame
 {
-    private List<IGame> _game;
-
-    public EntityFactoryImpl(IGame game)
+    public class EntityFactory : IEntityFactory
     {
-        this._game = new List<IGame>();
-        this._game.add(game);
-    }
+        private List<IGame> _game;
 
-    public  Entity MakeBomb(Pair<Float, Float> position)
-    {
-        return new Entity(_game.get(0), position, Type.BOMB)
-                        .addComponent(new ExplodeComponent())
-                        .addComponent(new DestroyComponent());
-    }
+        public EntityFactory(IGame game)
+        {
+            this._game = new List<IGame>();
+            this._game.Add(game);
+        }
 
-    
-    public  Entity MakeDestructibleWall(Pair<Float, Float> position)
-    {
-        return new Entity(_game.get(0), position, Type.DESTRUCTIBLE_WALL)
-                        .addComponent(new DestroyComponent());
-    }
+        public IEntity MakeBomb(Pair<float, float> position)
+        {
+            return new Entity(position, Type.BOMB, _game[0])
+                            .AddComponent(new ExplodeComponent())
+                            .AddComponent(new DestroyComponent());
+        }
 
-    
-    public  Entity MakeIndestructibleWall(Pair<Float, Float> position)
-    {
-        return new Entity(_game.get(0), position, Type.INDESTRUCTIBLE_WALL);
+        public IEntity MakeDestructibleWall(Pair<float, float> position)
+        {
+            return new Entity(position, Type.DESTRUCTIBLE_WALL, _game[0])
+                            .AddComponent(new DestroyComponent());
+        }
+
+        public IEntity MakeIndestructibleWall(Pair<float, float> position)
+        {
+            return new Entity(position, Type.INDESTRUCTIBLE_WALL, _game[0]);
+        }
     }
 }

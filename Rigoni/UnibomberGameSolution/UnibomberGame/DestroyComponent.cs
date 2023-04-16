@@ -1,5 +1,5 @@
-using ecs;
-
+/// disabled warning CS8602 because Components will never be null
+#pragma warning disable CS8602
 namespace UnibomberGame
 {
     public class DestroyComponent : AbstractComponent
@@ -42,6 +42,6 @@ namespace UnibomberGame
             }
         }
 
-        public void Destroy => IsDestroyed = true;
+        public void Destroy() => IsDestroyed = true;
     }
 }

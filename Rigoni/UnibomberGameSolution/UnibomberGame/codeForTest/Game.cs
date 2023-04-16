@@ -1,7 +1,7 @@
 using UnibomberGame;
 using System.Collections.Generic;
 
-namespace ecs
+namespace UnibomberGame
 {
     public class Game : IGame
     {
@@ -24,6 +24,9 @@ namespace ecs
 
         public void RemoveEntity(IEntity entity) => Entities.Remove(entity);
 
-        public Pair<int, int> GameDimensions { return new Pair<int, int>(_rows, _columns); }
+        public Pair<int, int> GameDimensions 
+        { 
+            get { return new Pair<int, int>(_rows, _columns); } 
+        }
     }
 }

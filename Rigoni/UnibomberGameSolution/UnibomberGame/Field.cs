@@ -1,39 +1,38 @@
-using ecs;
-
-namespace UnibomberGame;
-
-public class Field : IField
+namespace UnibomberGame
 {
-    public Dictionary<Pair<int, int>, Pair<Type, IEntity>> Field {  get; set; }
-    private readonly List<IGame> _game;
-
-    public Field(IGame game)
+    public class Field : IField
     {
-        this.Field = new Dictionary<Pair<int, int>, Pair<Type, IEntity>>;
-        this._game = new List<IGame>();
-        this._game.Add(game);
-    }
+        public Dictionary<Pair<int, int>, Pair<Type, IEntity>> GameField {  get; set; }
+        private readonly List<IGame> _game;
 
-    public void UpdateField()
-    {
-        int row;
-        int col;
-        List<IEntity> fieldEntities = new List<IEntity>;
-        foreach (var entity in _game.Get(0).Entities)
+        public Field(IGame game)
         {
-            if (entity.Type != Type.BOMBER)
-            {
-                fieldEntities.Add(entity);
-            }
+            this.GameField = new Dictionary<Pair<int, int>, Pair<Type, IEntity>>();
+            this._game = new List<IGame>();
+            this._game.Add(game);
         }
-        Field.Clear();
-        foreach (var entity in fieldEntities)
+
+        public void UpdateField()
         {
-            if (entity.Type != Type.BOMB)
+            int row;
+            int col;
+            List<IEntity> fieldEntities = new List<IEntity>();
+            foreach (var entity in _game[0].Entities)
             {
-                row = Math.Round(entity.Position.x);
-                col = Math.Round(entity.Position.y);
-                Field.Add(new Pair<int, int>(row, col));
+                if (entity.Type != Type.BOMBER)
+                {
+                    fieldEntities.Add(entity);
+                }
+            }
+            GameField.Clear();
+            foreach (var entity in fieldEntities)
+            {
+                if (entity.Type != Type.BOMB)
+                {
+                    row = (int) entity.Position.x;
+                    col = (int) entity.Position.y;
+                    GameField.Add(new Pair<int, int>(row, col), new Pair<Type, IEntity>(entity.Type, entity));
+                }
             }
         }
     }

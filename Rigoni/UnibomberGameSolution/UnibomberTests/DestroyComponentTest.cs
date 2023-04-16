@@ -1,21 +1,42 @@
-namespace UnibomberTests;
-
-[TestClass]
-public class DestroyComponentTest
+/// disabled warning CS8602 because Components will never be null
+#pragma warning disable CS8602
+namespace UnibomberTests
 {
-    private const float WALL_COORD_X = 5.6f;
-    private const float WALL_COORD_Y = 3.4f;
-    private const int FIELD_ROWS = 15;
-    private const int FIELD_COLS = 19;
-    private readonly IGame _game = new Game(FIELD_ROWS, FIELD_COLS);
-    private readonly IEntityFactory _entityFactory = new EntityFactory(_game);
-
-    [TestMethod]
-    public void TestDestructibleWall()
+    [TestClass]
+    public class DestroyComponentTest
     {
-        var desWall = _entityFactory.MakeDestructibleWall(new Pair<WALL_COORD_X, WALL_COORD_Y>);
-        Assert.False(desWall.GetComponent<DestroyComponent>().IsDestroyed);
-        desWall.GetComponent<DestroyComponent>().Destroy();
-        Assert.True(desWall.GetComponent<DestroyComponent>().IsDestroyed);
+        private const float WALL_COORD_X = 5.6F;
+        private const float WALL_COORD_Y = 3.4F;
+        private const int FIELD_ROWS = 15;
+        private const int FIELD_COLS = 19;
+        private const int DESTROY_FRAMES = 15;
+        private static IGame _game = new Game(FIELD_ROWS, FIELD_COLS);
+        private readonly IEntityFactory _entityFactory = new EntityFactory(_game);
+
+        [TestMethod]
+        public void TestDestructibleWall()
+        {
+            var desWall = _entityFactory.MakeDestructibleWall(new Pair<float, float>(WALL_COORD_X, WALL_COORD_Y));
+            _game.AddEntity(desWall);
+            Assert.IsTrue(_game.Entities.Contains(desWall));
+            Assert.IsNotNull(desWall.GetComponent<DestroyComponent>());
+            Assert.IsFalse(desWall.GetComponent<DestroyComponent>().IsDestroyed);
+            desWall.GetComponent<DestroyComponent>().Destroy();
+            Assert.IsTrue(desWall.GetComponent<DestroyComponent>().IsDestroyed);
+            for (int i = 0; i < DESTROY_FRAMES; i++)
+            {
+                desWall.GetComponent<DestroyComponent>().Update();
+            }
+            Assert.IsFalse(_game.Entities.Contains(desWall));
+        }
+
+        [TestMethod]
+        public void TestIndestructibleWall()
+        {
+            var indesWall = _entityFactory.MakeIndestructibleWall(new Pair<float, float>(WALL_COORD_X, WALL_COORD_Y));
+            _game.AddEntity(indesWall);
+            Assert.IsTrue(_game.Entities.Contains(indesWall));
+            Assert.IsNull(indesWall.GetComponent<DestroyComponent>());
+        }
     }
 }
