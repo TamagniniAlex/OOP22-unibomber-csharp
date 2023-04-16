@@ -1,5 +1,3 @@
-using Microsoft.VisualBasic;
-
 namespace UnibomberGame
 {
     public class PowerUpHandlerComponent : PowerUpListComponent
