@@ -39,7 +39,7 @@ namespace UnibomberGame
             return this.GetBombNumber() - this.GetBombPlaced();
         }
 
-        public void addPowerUp(PowerUpType powerUpType)
+        public void AddPowerUp(PowerUpType powerUpType)
         {
             this.AddPowerUpList(powerUpType);
             switch (powerUpType)

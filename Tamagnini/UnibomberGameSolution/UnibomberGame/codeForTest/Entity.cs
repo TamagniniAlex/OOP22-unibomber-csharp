@@ -4,7 +4,7 @@
     {
         private readonly List<IComponent> components = new List<IComponent>();
         private Pair<float, float>? position;
-        private float speed;
+        private float speed = 0.3f;
 
         public T? GetComponent<T>() where T : IComponent
         {
