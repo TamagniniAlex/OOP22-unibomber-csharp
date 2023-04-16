@@ -1,6 +1,4 @@
-using ecs;
-
-namespace UnibomberGame;
+namespace UnibomberGame
 {
     public class ExplodeComponent : AbstractComponent
     {

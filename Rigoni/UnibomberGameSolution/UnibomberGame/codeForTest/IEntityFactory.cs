@@ -1,20 +1,11 @@
-using ecs;
-
-public interface IEntityFactory
+namespace UnibomberGame
 {
-    IEntity MakePowerUp(Pair<float, float> position, PowerUpType powerUpType);
+    public interface IEntityFactory
+    {
+        IEntity MakeBomb(Pair<float, float> position);
 
-    IEntity MakeBomber(Pair<float, float> position, Type type);
+        IEntity MakeDestructibleWall(Pair<float, float> position);
 
-    IEntity MakePlayable(Pair<float, float> position);
-
-    IEntity MakeBot(Pair<float, float> position, int difficultyAI);
-
-    IEntity MakeBomb(Pair<float, float> position, IEntity placer);
-
-    IEntity MakeDestructibleWall(Pair<float, float> position);
-
-    IEntity MakeIndestructibleWall(Pair<float, float> position);
-
-    IEntity MakeRaisingWall(Pair<float, float> position);
+        IEntity MakeIndestructibleWall(Pair<float, float> position);
+    }
 }

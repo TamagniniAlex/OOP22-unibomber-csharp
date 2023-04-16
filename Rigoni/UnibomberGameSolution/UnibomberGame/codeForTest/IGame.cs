@@ -1,10 +1,8 @@
-using UnibomberGame;
-
-namespace ecs
+namespace UnibomberGame
 {
     public interface IGame
     {
-        IList<IEntity> Entities { get; }
+        List<IEntity> Entities { get; }
 
         void AddEntity<T>(T entity) where T : IEntity;
 

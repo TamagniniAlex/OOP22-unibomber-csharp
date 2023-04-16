@@ -1,4 +1,4 @@
-namespace ecs 
+namespace UnibomberGame 
 {
     /**
  * Type enum.

@@ -1,9 +1,9 @@
-namespace UnibomberGame;
-using ecs;
-
-public interface IField
+namespace UnibomberGame
 {
-    Dictionary<Pair<int, int>, Pair<Type, IEntity>> Field { get; set; }
+    public interface IField
+    {
+        Dictionary<Pair<int, int>, Pair<Type, IEntity>> GameField { get; set; }
 
-    void UpdateField();
+        void UpdateField();
+    }
 }

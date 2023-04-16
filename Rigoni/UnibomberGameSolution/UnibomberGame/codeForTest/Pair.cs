@@ -1,4 +1,4 @@
-namespace ecs
+namespace UnibomberGame
 {
     public class Pair<X, Y>
     {
