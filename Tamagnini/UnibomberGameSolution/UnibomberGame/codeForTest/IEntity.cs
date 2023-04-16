@@ -6,6 +6,8 @@ namespace UnibomberGame
 
         T? GetComponent<T>() where T : IComponent;
 
+        Pair<float, float> Position { get; set; }
+
         float GetSpeed();
 
         void AddSpeed(float speedValue);
