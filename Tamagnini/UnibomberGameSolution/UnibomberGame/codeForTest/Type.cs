@@ -1,6 +1,6 @@
-namespace UnibomberGame 
+namespace UnibomberGame
 {
-    public enum Type 
+    public enum Type
     {
         BOMBER,
         BOMB,

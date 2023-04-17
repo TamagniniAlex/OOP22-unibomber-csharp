@@ -13,6 +13,6 @@ namespace UnibomberGame
         float GetSpeed();
 
         void AddSpeed(float speedValue);
-        
+
     }
 }

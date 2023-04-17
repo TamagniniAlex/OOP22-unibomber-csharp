@@ -6,7 +6,5 @@ namespace UnibomberGame
 
         void AddEntity<T>(T entity) where T : IEntity;
 
-        void RemoveEntity(IEntity entity);
-
     }
 }

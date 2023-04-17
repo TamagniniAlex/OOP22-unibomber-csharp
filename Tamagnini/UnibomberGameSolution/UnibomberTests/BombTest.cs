@@ -22,18 +22,19 @@ namespace UnibomerTests
         public void TestBombPlace()
         {
             IEntity player = CreatePlayerEntity();
-            this.game.AddEntity(player);
-            player.GetComponent<BombPlaceComponent>().PlaceBomb(this.game);
+            game.AddEntity(player);
+            player.GetComponent<BombPlaceComponent>().PlaceBomb(game);
             player.GetComponent<BombPlaceComponent>().Update();
             IEntity? bombEntity = null;
-            foreach(var entities in this.game.Entities)
+            foreach (IEntity entities in game.Entities)
             {
-                if (entities.EntityType.Equals(UnibomberGame.Type.BOMB)) {
+                if (entities.EntityType.Equals(UnibomberGame.Type.BOMB))
+                {
                     bombEntity = entities;
                 }
             }
             Assert.IsTrue(bombEntity != null);
-            Assert.AreEqual(new Pair<float,float>(BOMB_EXCEPTED_X, BOMB_EXCEPTED_Y), bombEntity.EntityPosition);
+            Assert.AreEqual(new Pair<float, float>(BOMB_EXCEPTED_X, BOMB_EXCEPTED_Y), bombEntity.EntityPosition);
         }
 
     }

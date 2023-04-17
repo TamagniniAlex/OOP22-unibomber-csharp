@@ -2,6 +2,6 @@ namespace UnibomberGame
 {
     public interface IComponent
     {
-        void update();
+        void Update();
     }
 }

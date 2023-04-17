@@ -4,14 +4,12 @@ namespace UnibomberGame
     {
         public List<IEntity> Entities { get; }
 
-        public Game()
+        public Game() => Entities = new List<IEntity>();
+
+        public void AddEntity<T>(T entity) where T : IEntity
         {
-            Entities = new List<IEntity>();
+            Entities.Add(entity);
         }
-
-        public void AddEntity<T>(T entity) where T : IEntity => Entities.Add(entity);
-
-        public void RemoveEntity(IEntity entity) => Entities.Remove(entity);
 
     }
 }

@@ -4,6 +4,6 @@ namespace UnibomberGame
     {
         public IEntity? Entity { get; set; }
 
-        public abstract void update();
+        public abstract void Update();
     }
 }
