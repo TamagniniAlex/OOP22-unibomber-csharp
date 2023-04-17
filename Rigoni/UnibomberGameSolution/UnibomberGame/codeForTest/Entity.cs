@@ -10,7 +10,7 @@ namespace UnibomberGame
 
         private readonly List<IGame> _game;
 
-        public Type Type { get; }
+        public Type EntityType { get; }
 
         public Pair<float, float> Position { get; set; }
 
@@ -19,7 +19,7 @@ namespace UnibomberGame
         public Entity(Pair<float, float> position, Type type, IGame game)
         {
             Position = new Pair<float, float>(position.x, position.y);
-            Type = type;
+            EntityType = type;
             _components = new HashSet<IComponent>();
             _game = new List<IGame>();
             _game.Add(game);

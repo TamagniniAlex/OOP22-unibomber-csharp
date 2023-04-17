@@ -10,7 +10,7 @@ namespace UnibomberGame
 
         IEntity AddComponent(AbstractComponent component);
 
-        Type Type { get; }
+        Type EntityType { get; }
 
         IGame Game { get; }
 
