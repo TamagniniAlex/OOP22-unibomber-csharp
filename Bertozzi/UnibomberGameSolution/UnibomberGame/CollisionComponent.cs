@@ -1,9 +1,16 @@
-﻿/// disabled warning CS8602 because Components will never be null
-#pragma warning disable CS8602
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace UnibomberGame
 {
-    public class CollisionComponent : AbstractComponent
+    internal class CollisionComponent : AbstractComponent
     {
-       
+        public override void Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -2,18 +2,42 @@ namespace UnibomberGame
 {
     public interface IEntity
     {
-        HashSet<IComponent> Components { get; }
+        /// <summary>
+        /// Set / Get entity type.
+        /// </summary>
+        Type EntityType { get; set; }
 
-        Pair<float, float> Position { get; set; }
+        /// <summary>
+        /// Set / Get entity position.
+        /// </summary>
+        Pair<float, float> EntityPosition { get; set; }
 
+        /// <summary>
+        /// Get Entity component.
+        /// </summary>
+        /// <typeparam name="T">component class</typeparam>
+        /// <returns>component</returns>
         T? GetComponent<T>() where T : IComponent;
 
-        IEntity AddComponent(AbstractComponent component);
+        /// <summary>
+        /// Add component to Entity.
+        /// </summary>
+        /// <param name="component">component to add</param>
+        /// <returns>entity</returns>
+        Entity AddComponent(AbstractComponent component);
 
-        Type Type { get; }
+        /// <summary>
+        /// Return entity speed.
+        /// </summary>
+        /// <returns>speed</returns>
+        float GetSpeed();
 
-        IGame Game { get; }
+        /// <summary>
+        /// Add speed to Entity.
+        /// </summary>
+        /// <param name="speedValue">value to add</param>
+        void AddSpeed(float speedValue);
 
-        float Speed { get; set; }
     }
+
 }

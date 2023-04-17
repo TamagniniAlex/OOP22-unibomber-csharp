@@ -1,55 +1,54 @@
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-
-namespace UnibomberGame
+﻿namespace UnibomberGame
 {
     public class Entity : IEntity
     {
-        private readonly HashSet<IComponent> _components;
+        private readonly List<IComponent> _components;
+        private float _speed;
 
-        private readonly List<IGame> _game;
-
-        public Type Type { get; }
-
-        public Pair<float, float> Position { get; set; }
-
-        public float Speed { get; set; }
-
-        public Entity(Pair<float, float> position, Type type, IGame game)
+        /// <summary>
+        /// Constructor set default Entities settings.
+        /// </summary>
+        /// <param name="type">Entity type</param>
+        public Entity(Type type)
         {
-            Position = new Pair<float, float>(position.x, position.y);
-            Type = type;
-            _components = new HashSet<IComponent>();
-            _game = new List<IGame>();
-            _game.Add(game);
-            Speed = 0.3F;
+            EntityType = type;
+            EntityPosition = new Pair<float, float>(0f, 0f);
+            _components = new List<IComponent>();
+            _speed = 0.3f;
         }
 
-        public HashSet<IComponent> Components
-        {
-            get { return new HashSet<IComponent>(_components); }
-        }
+        /// <inheritdoc />
+        public Type EntityType { get; set; }
 
+        /// <inheritdoc />
+        public Pair<float, float> EntityPosition { get; set; }
+
+        /// <inheritdoc />
         public T? GetComponent<T>() where T : IComponent
         {
             return _components.OfType<T>().FirstOrDefault();
         }
 
-        public IEntity AddComponent(AbstractComponent component)
+        /// <inheritdoc />
+        public Entity AddComponent(AbstractComponent component)
         {
             component.Entity = this;
             _components.Add(component);
             return this;
         }
 
-        public IGame Game
+        /// <inheritdoc />
+        public float GetSpeed()
         {
-            get { return _game[0]; }
+            return _speed;
         }
-        public IEntity getType()
+
+        /// <inheritdoc />
+        public void AddSpeed(float speed)
         {
-            return Type;
+            _speed += speed;
         }
+
     }
+
 }

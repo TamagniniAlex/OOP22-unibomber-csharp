@@ -1,6 +1,9 @@
 namespace UnibomberGame
 {
-    public enum PowerUpType 
+    /// <summary>
+    /// PowerUpType enum. 
+    /// </summary>
+    public enum PowerUpType
     {
         BOMBUP,
         BOMBDOWN,
@@ -12,4 +15,5 @@ namespace UnibomberGame
         KICKBOMB,
         THROWBOMB
     }
+
 }
