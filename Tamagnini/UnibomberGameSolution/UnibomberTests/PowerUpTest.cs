@@ -60,5 +60,18 @@ namespace UnibomerTests
             Assert.AreEqual(BOMB_FIRE_MAX, player.GetComponent<PowerUpHandlerComponent>().GetBombFire());
         }
 
+        [TestMethod]
+        public void TestSpeedUpPowerUp()
+        {
+            IEntity player = createPlayerEntity();
+            Assert.AreEqual(SPEED_BASE, player.GetSpeed());
+            player.GetComponent<PowerUpHandlerComponent>().AddPowerUp(PowerUpType.SPEEDUP);
+            Assert.AreEqual(SPEED_BASE + SPEED_POWERUP, player.GetSpeed());
+            Assert.IsTrue(player.GetComponent<PowerUpHandlerComponent>().GetPowerUpList().Contains(PowerUpType.SPEEDUP));
+            player.GetComponent<PowerUpHandlerComponent>().AddPowerUp(PowerUpType.SPEEDDOWN);
+            Assert.AreEqual(SPEED_BASE, player.GetSpeed());
+            Assert.IsTrue(player.GetComponent<PowerUpHandlerComponent>().GetPowerUpList().Contains(PowerUpType.SPEEDDOWN));
+        }
+
     }
 }
