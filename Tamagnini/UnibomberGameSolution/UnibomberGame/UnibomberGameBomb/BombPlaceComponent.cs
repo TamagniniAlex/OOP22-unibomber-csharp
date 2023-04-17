@@ -5,6 +5,7 @@ namespace UnibomberGame
     public class BombPlaceComponent : AbstractComponent
     {
         private bool bombPlaced;
+        private IGame? game;
 
         public override void update()
         {
@@ -14,22 +15,26 @@ namespace UnibomberGame
                 if (this.bombPlaced)
                 {
                     Pair<float, float> normalizedPosition = new Pair<float, float>(
-                        (float)Math.Round(thisEntity.Position.x),
-                        (float)Math.Round(thisEntity.Position.y));
+                        (float)Math.Round(thisEntity.EntityPosition.x),
+                        (float)Math.Round(thisEntity.EntityPosition.y));
 
-                    IEntity bombCreate = new Entity();
-                    bombCreate.Position = normalizedPosition;
+                    IEntity bombCreate = new Entity(Type.BOMB)
+                    {
+                        EntityPosition = normalizedPosition
+                    };
+                    game.AddEntity(bombCreate);
                     thisEntity.GetComponent<PowerUpHandlerComponent>().AddBombPlaced(1);
                 }
             }
             this.bombPlaced = false;
         }
 
-        public void placeBomb()
+        public void placeBomb(IGame game)
         {
             if (this.Entity.GetComponent<PowerUpHandlerComponent>().GetRemainingBomb() > 0)
             {
                 this.bombPlaced = true;
+                this.game = game;
             }
         }
     }
