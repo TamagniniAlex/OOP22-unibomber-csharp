@@ -1,18 +1,25 @@
-﻿namespace UnibomberGame
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+
+namespace UnibomberGame
 {
     public class Entity : IEntity
     {
         private readonly List<IComponent> _components;
+        private Pair<float, float> Position { get; set; } 
         private float _speed;
 
         /// <summary>
         /// Constructor set default Entities settings.
         /// </summary>
         /// <param name="type">Entity type</param>
-        public Entity(Type type)
+        /// <param name="position">Entity position</param>
+        public Entity(Type type, Pair<float, float> position)
         {
             EntityType = type;
             EntityPosition = new Pair<float, float>(0f, 0f);
+            Position = position;   
             _components = new List<IComponent>();
             _speed = 0.3f;
         }
@@ -47,6 +54,11 @@
         public void AddSpeed(float speed)
         {
             _speed += speed;
+        }
+        /// <inheritdoc />
+        public void addPosition(Pair<float,float> position)
+        {
+            Position = new Pair<float, float>(Position.GetX + position.GetX, Position.GetY + position.GetY);
         }
 
     }
