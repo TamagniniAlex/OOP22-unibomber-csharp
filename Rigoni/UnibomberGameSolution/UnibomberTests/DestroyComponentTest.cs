@@ -1,16 +1,16 @@
-/// disabled warning CS8602 because Components will never be null
+/// disabled warning CS8602 because Components are controlled if are null
 #pragma warning disable CS8602
 namespace UnibomberTests
 {
     [TestClass]
     public class DestroyComponentTest
     {
-        private const float WALL_COORD_X = 5.6F;
-        private const float WALL_COORD_Y = 3.4F;
-        private const int FIELD_ROWS = 15;
-        private const int FIELD_COLS = 19;
-        private const int DESTROY_FRAMES = 15;
-        private static IGame _game = new Game(FIELD_ROWS, FIELD_COLS);
+        private static readonly float WALL_COORD_X = 5.6F;
+        private static readonly float WALL_COORD_Y = 3.4F;
+        private static readonly int FIELD_ROWS = 15;
+        private static readonly int FIELD_COLS = 19;
+        private static readonly int DESTROY_FRAMES = 15;
+        private static readonly IGame _game = new Game(FIELD_ROWS, FIELD_COLS);
         private readonly IEntityFactory _entityFactory = new EntityFactory(_game);
 
         [TestMethod]

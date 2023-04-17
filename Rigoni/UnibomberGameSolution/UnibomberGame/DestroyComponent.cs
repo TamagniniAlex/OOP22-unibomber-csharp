@@ -1,4 +1,4 @@
-/// disabled warning CS8602 because Components will never be null
+/// disabled warning CS8602 because Components will never be null in this case
 #pragma warning disable CS8602
 namespace UnibomberGame
 {
@@ -38,7 +38,9 @@ namespace UnibomberGame
             {
                 DestroyedFrames++;
                 if (DestroyedFrames >= DestroyFramesPerType)
+                { 
                     Entity.Game.RemoveEntity(Entity);
+                }
             }
         }
 
