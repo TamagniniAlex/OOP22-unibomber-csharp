@@ -2,39 +2,42 @@
 {
     public class Entity : IEntity
     {
-        private readonly List<IComponent> components = new List<IComponent>();
-        private Pair<float, float>? position;
-        private float speed = 0.3f;
+        private readonly List<IComponent> _components;
+        private float _speed;
+
+        public Entity(Type type)
+        {
+            EntityType = type;
+            EntityPosition = new Pair<float, float>(0f, 0f);
+            _components = new List<IComponent>();
+            _speed = 0.3f;
+        }
+
+        public Type EntityType { get; set; }
+
+        public Pair<float, float> EntityPosition { get; set; }
 
         public T? GetComponent<T>() where T : IComponent
         {
-            return components.OfType<T>().FirstOrDefault();
+            return _components.OfType<T>().FirstOrDefault();
         }
 
         public Entity AddComponent(AbstractComponent component)
         {
             component.Entity = this;
-            components.Add(component);
+            _components.Add(component);
             return this;
-        }
-
-        public Pair<float, float> Position
-        {
-            get
-            {
-                return this.position != null ? new Pair<float, float>(this.position.x, this.position.y) : new Pair<float, float>(0, 0);
-            }
-            set => this.position = new Pair<float, float>(value.x, value.y);
         }
 
         public float GetSpeed()
         {
-            return this.speed;
+            return _speed;
         }
 
-        public void AddSpeed(float speedValue)
+        public void AddSpeed(float speed)
         {
-            this.speed += speedValue;
+            _speed += speed;
         }
+
     }
 }
