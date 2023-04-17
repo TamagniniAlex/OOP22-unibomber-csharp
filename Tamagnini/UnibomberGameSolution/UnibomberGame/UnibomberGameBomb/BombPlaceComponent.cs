@@ -2,11 +2,15 @@
 #pragma warning disable CS8602
 namespace UnibomberGame
 {
+    /// <summary>
+    /// This component manage bomb placement.
+    /// </summary>
     public class BombPlaceComponent : AbstractComponent
     {
         private bool _bombPlaced;
         private IGame? _game;
 
+        /// <inheritdoc />
         public override void Update()
         {
             if (Entity != null)
@@ -29,6 +33,10 @@ namespace UnibomberGame
             _bombPlaced = false;
         }
 
+        /// <summary>
+        /// This method set the state of the bomb.
+        /// </summary>
+        /// <param name="game">entity's game</param>
         public void PlaceBomb(IGame game)
         {
             if (Entity.GetComponent<PowerUpHandlerComponent>().GetRemainingBomb() > 0)
@@ -37,5 +45,7 @@ namespace UnibomberGame
                 _game = game;
             }
         }
+
     }
+
 }

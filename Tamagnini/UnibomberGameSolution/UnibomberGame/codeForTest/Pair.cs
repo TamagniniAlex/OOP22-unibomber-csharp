@@ -27,5 +27,7 @@ namespace UnibomberGame
                 EqualityComparer<X>.Default.Equals(GetX, pair.GetX) &&
                 EqualityComparer<Y>.Default.Equals(GetY, pair.GetY);
         }
+
     }
+
 }
