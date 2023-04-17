@@ -21,7 +21,7 @@ namespace UnibomberGame
             {
                 //In this part, in the original project,
                 //the variable is setted by a map of constants
-                switch (Entity.Type)
+                switch (Entity.EntityType)
                 {
                     case Type.DESTRUCTIBLE_WALL:
                         DestroyFramesPerType = 15;

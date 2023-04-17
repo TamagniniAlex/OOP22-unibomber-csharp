@@ -18,6 +18,7 @@ namespace UnibomberTests
         {
             var desWall = _entityFactory.MakeDestructibleWall(new Pair<float, float>(WALL_COORD_X, WALL_COORD_Y));
             _game.AddEntity(desWall);
+            Assert.AreEqual(UnibomberGame.Type.DESTRUCTIBLE_WALL, desWall.EntityType);
             Assert.IsTrue(_game.Entities.Contains(desWall));
             Assert.IsNotNull(desWall.GetComponent<DestroyComponent>());
             Assert.IsFalse(desWall.GetComponent<DestroyComponent>().IsDestroyed);
@@ -35,6 +36,7 @@ namespace UnibomberTests
         {
             var indesWall = _entityFactory.MakeIndestructibleWall(new Pair<float, float>(WALL_COORD_X, WALL_COORD_Y));
             _game.AddEntity(indesWall);
+            Assert.AreEqual(UnibomberGame.Type.INDESTRUCTIBLE_WALL, indesWall.EntityType);
             Assert.IsTrue(_game.Entities.Contains(indesWall));
             Assert.IsNull(indesWall.GetComponent<DestroyComponent>());
         }
