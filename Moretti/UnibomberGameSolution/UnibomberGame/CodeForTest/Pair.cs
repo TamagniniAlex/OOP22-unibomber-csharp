@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace UnibomberGame
 {
     public class Pair<X, Y>
