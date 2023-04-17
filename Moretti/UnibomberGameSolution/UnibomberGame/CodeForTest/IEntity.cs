@@ -8,6 +8,11 @@ namespace UnibomberGame
         Type EntityType { get; set; }
 
         /// <summary>
+        /// Set / Get entity Position.
+        /// </summary>
+        Pair<float, float> Position { get; set; }
+
+        /// <summary>
         /// Set / Get entity position.
         /// </summary>
         Pair<float, float> EntityPosition { get; set; }
@@ -38,6 +43,12 @@ namespace UnibomberGame
         /// <param name="speedValue">value to add</param>
         void AddSpeed(float speedValue);
 
+        /// <summary>
+        /// adds position to entity.
+        /// </summary>
+        /// <param name="position">position to add</param>
+
+        public void addPosition(Pair<float, float> position);
     }
 
 }
