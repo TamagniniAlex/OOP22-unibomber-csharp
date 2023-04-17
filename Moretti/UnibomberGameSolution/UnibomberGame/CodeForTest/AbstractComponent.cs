@@ -5,7 +5,7 @@ namespace UnibomberGame
         /// <summary>
         /// Set / Get Entity object.
         /// </summary>
-        public IEntity? _Entity { get; set; }
+        public IEntity? Entity { get; set; }
 
         /// <inheritdoc />
         public abstract void Update();
