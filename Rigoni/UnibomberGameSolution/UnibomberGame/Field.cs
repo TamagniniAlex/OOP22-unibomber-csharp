@@ -19,7 +19,7 @@ namespace UnibomberGame
             List<IEntity> fieldEntities = new List<IEntity>();
             foreach (var entity in _game[0].Entities)
             {
-                if (entity.Type != Type.BOMBER)
+                if (entity.EntityType != Type.BOMBER)
                 {
                     fieldEntities.Add(entity);
                 }
@@ -27,11 +27,11 @@ namespace UnibomberGame
             GameField.Clear();
             foreach (var entity in fieldEntities)
             {
-                if (entity.Type != Type.BOMB)
+                if (entity.EntityType != Type.BOMB)
                 {
                     row = (int) entity.Position.x;
                     col = (int) entity.Position.y;
-                    GameField.Add(new Pair<int, int>(row, col), new Pair<Type, IEntity>(entity.Type, entity));
+                    GameField.Add(new Pair<int, int>(row, col), new Pair<Type, IEntity>(entity.EntityType, entity));
                 }
             }
         }

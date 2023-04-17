@@ -2,14 +2,17 @@ namespace UnibomberGame
 {
     public interface IEntity
     {
-        Entity AddComponent(IComponent component);
+        Type EntityType { get; set; }
+
+        Pair<float, float> EntityPosition { get; set; }
 
         T? GetComponent<T>() where T : IComponent;
 
-        Pair<float, float> Position { get; set; }
+        Entity AddComponent(AbstractComponent component);
 
         float GetSpeed();
 
         void AddSpeed(float speedValue);
+        
     }
 }
