@@ -4,32 +4,37 @@ namespace UnibomberGame
 {
     public class BombPlaceComponent : AbstractComponent
     {
-        private bool bombPlaced;
+        private bool _bombPlaced;
+        private IGame? _game;
 
-        public override void update()
+        public override void Update()
         {
-            if (this.Entity != null)
+            if (Entity != null)
             {
-                IEntity thisEntity = this.Entity;
-                if (this.bombPlaced)
+                IEntity thisEntity = Entity;
+                if (_bombPlaced)
                 {
-                    Pair<float, float> normalizedPosition = new Pair<float, float>(
-                        (float)Math.Round(thisEntity.Position.x),
-                        (float)Math.Round(thisEntity.Position.y));
+                    Pair<float, float> normalizedPosition = new(
+                        (float)Math.Round(thisEntity.EntityPosition.GetX),
+                        (float)Math.Round(thisEntity.EntityPosition.GetY));
 
-                    IEntity bombCreate = new Entity();
-                    bombCreate.Position = normalizedPosition;
+                    IEntity bombCreate = new Entity(Type.BOMB)
+                    {
+                        EntityPosition = normalizedPosition
+                    };
+                    _game.AddEntity(bombCreate);
                     thisEntity.GetComponent<PowerUpHandlerComponent>().AddBombPlaced(1);
                 }
             }
-            this.bombPlaced = false;
+            _bombPlaced = false;
         }
 
-        public void placeBomb()
+        public void PlaceBomb(IGame game)
         {
-            if (this.Entity.GetComponent<PowerUpHandlerComponent>().GetRemainingBomb() > 0)
+            if (Entity.GetComponent<PowerUpHandlerComponent>().GetRemainingBomb() > 0)
             {
-                this.bombPlaced = true;
+                _bombPlaced = true;
+                _game = game;
             }
         }
     }
