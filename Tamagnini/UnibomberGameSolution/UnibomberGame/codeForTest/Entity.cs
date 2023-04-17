@@ -11,9 +11,10 @@
             return components.OfType<T>().FirstOrDefault();
         }
 
-        public Entity AddComponent(IComponent component)
+        public Entity AddComponent(AbstractComponent component)
         {
-            this.components.Add(component);
+            component.Entity = this;
+            components.Add(component);
             return this;
         }
 

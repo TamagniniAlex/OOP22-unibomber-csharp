@@ -2,7 +2,7 @@ namespace UnibomberGame
 {
     public interface IEntity
     {
-        Entity AddComponent(IComponent component);
+        Entity AddComponent(AbstractComponent component);
 
         T? GetComponent<T>() where T : IComponent;
 
