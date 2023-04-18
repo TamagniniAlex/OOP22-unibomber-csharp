@@ -2,7 +2,9 @@ namespace UnibomberGame
 {
     public class Field : IField
     {
-        public Dictionary<Pair<int, int>, Pair<Type, IEntity>> GameField {  get; set; }
+        /// <inheritdoc />
+        public Dictionary<Pair<int, int>, Pair<Type, IEntity>> GameField {  get; }
+        
         private readonly List<IGame> _game;
 
         public Field(IGame game)
@@ -12,6 +14,7 @@ namespace UnibomberGame
             this._game.Add(game);
         }
 
+        /// <inheritdoc />
         public void UpdateField()
         {
             int row;

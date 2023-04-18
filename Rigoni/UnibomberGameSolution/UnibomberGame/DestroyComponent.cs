@@ -15,6 +15,7 @@ namespace UnibomberGame
             DestroyFramesPerType = -1;
         }
 
+        /// <inheritdoc />
         public override void Update()
         {
             if (DestroyFramesPerType == -1)
@@ -44,6 +45,9 @@ namespace UnibomberGame
             }
         }
 
+        /// <summary>
+        /// A method to destroy the entity.
+        /// </summary>
         public void Destroy() => IsDestroyed = true;
     }
 }

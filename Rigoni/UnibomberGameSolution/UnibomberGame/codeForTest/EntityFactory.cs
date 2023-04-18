@@ -13,6 +13,7 @@ namespace UnibomberGame
             this._game.Add(game);
         }
 
+        /// <inheritdoc />
         public IEntity MakeBomb(Pair<float, float> position)
         {
             return new Entity(position, Type.BOMB, _game[0])
@@ -20,12 +21,14 @@ namespace UnibomberGame
                             .AddComponent(new DestroyComponent());
         }
 
+        /// <inheritdoc />
         public IEntity MakeDestructibleWall(Pair<float, float> position)
         {
             return new Entity(position, Type.DESTRUCTIBLE_WALL, _game[0])
                             .AddComponent(new DestroyComponent());
         }
 
+        /// <inheritdoc />
         public IEntity MakeIndestructibleWall(Pair<float, float> position)
         {
             return new Entity(position, Type.INDESTRUCTIBLE_WALL, _game[0]);

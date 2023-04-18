@@ -10,10 +10,13 @@ namespace UnibomberGame
 
         private readonly List<IGame> _game;
 
+        /// <inheritdoc />
         public Type EntityType { get; }
 
+        /// <inheritdoc />
         public Pair<float, float> Position { get; set; }
 
+        /// <inheritdoc />
         public float Speed { get; set; }
 
         public Entity(Pair<float, float> position, Type type, IGame game)
@@ -26,16 +29,19 @@ namespace UnibomberGame
             Speed = 0.3F;
         }
 
+        /// <inheritdoc />
         public HashSet<IComponent> Components
         {
             get { return new HashSet<IComponent>(_components); }
         }
 
+        /// <inheritdoc />
         public T? GetComponent<T>() where T : IComponent
         {
             return _components.OfType<T>().FirstOrDefault();
         }
 
+        /// <inheritdoc />
         public IEntity AddComponent(AbstractComponent component)
         {
             component.Entity = this;
@@ -43,6 +49,7 @@ namespace UnibomberGame
             return this;
         }
 
+        /// <inheritdoc />
         public IGame Game
         {
             get { return _game[0]; }
