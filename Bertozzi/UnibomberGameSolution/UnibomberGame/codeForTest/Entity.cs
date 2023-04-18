@@ -16,7 +16,8 @@
             _components = new List<IComponent>();
             _speed = 0.3f;
         }
-
+        /// <inheritdoc />
+        public IGame Game { get; set; }
         /// <inheritdoc />
         public Type EntityType { get; set; }
 

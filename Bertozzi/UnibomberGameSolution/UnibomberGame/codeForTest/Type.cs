@@ -7,6 +7,8 @@ namespace UnibomberGame
     {
         BOMBER,
         BOMB,
+        POWERUP,
+        RISING_WALL
     }
 
 }
