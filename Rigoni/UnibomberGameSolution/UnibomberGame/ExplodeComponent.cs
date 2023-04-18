@@ -20,6 +20,7 @@ namespace UnibomberGame
             IsExploding = false;
         }
 
+        /// <inheritdoc />
         public override void Update()
         {
             if (ExpiringFrames == EXPIRING_TIME)

@@ -3,6 +3,10 @@ namespace UnibomberGame
     public interface IEntity
     {
         /// <summary>
+        /// Set / Get game.
+        /// </summary>
+        IGame Game { get; set; }
+        /// <summary>
         /// Set / Get entity type.
         /// </summary>
         Type EntityType { get; set; }

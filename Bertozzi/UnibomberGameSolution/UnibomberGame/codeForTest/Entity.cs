@@ -2,21 +2,23 @@
 {
     public class Entity : IEntity
     {
-        private readonly List<IComponent> _components;
+        private readonly HashSet<IComponent> _components;
         private float _speed;
 
         /// <summary>
         /// Constructor set default Entities settings.
         /// </summary>
         /// <param name="type">Entity type</param>
-        public Entity(Type type)
+        public Entity(Pair<float, float> position, Type type, IGame game)
         {
+            EntityPosition = new Pair<float, float>(position.GetX, position.GetY);
             EntityType = type;
-            EntityPosition = new Pair<float, float>(0f, 0f);
-            _components = new List<IComponent>();
-            _speed = 0.3f;
+            _components = new HashSet<IComponent>();
+            Game = game;
+            _speed = 0.3F;
         }
-
+        /// <inheritdoc />
+        public IGame Game { get; set; }
         /// <inheritdoc />
         public Type EntityType { get; set; }
 

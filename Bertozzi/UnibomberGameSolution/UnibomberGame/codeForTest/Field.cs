@@ -32,8 +32,8 @@ namespace UnibomberGame
             {
                 if (entity.EntityType != Type.BOMB)
                 {
-                    row = (int) entity.Position.x;
-                    col = (int) entity.Position.y;
+                    row = (int) entity.EntityPosition.GetX;
+                    col = (int) entity.EntityPosition.GetY;
                     GameField.Add(new Pair<int, int>(row, col), new Pair<Type, IEntity>(entity.EntityType, entity));
                 }
             }
