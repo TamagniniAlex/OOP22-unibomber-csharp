@@ -9,12 +9,15 @@ namespace UnibomberGame
 {
     internal class RaisingComponent : AbstractComponent
     {
-     public void update()
+
+        /// <summary>
+        /// This method turns the entity it is attatched to into a full wall after a frame has passed
+        /// </summary>
+        public override void Update()
         {
             this.Entity.Game.AddEntity(new Entity(Type.WALL,this.Entity.Position));
-            this.Entity.Game..remove(entity);
+            this.Entity.Game.RemoveEntity(this.Entity);
         }
-
     }
 
 }
