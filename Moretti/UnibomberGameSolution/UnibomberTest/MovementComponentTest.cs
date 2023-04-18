@@ -6,26 +6,22 @@ using UnibomberGame;
 namespace UnibomerTests
 {
     [TestClass]
-    public class BombTest
+    public class MovementTest
     {
-        private static readonly float BOMB_EXCEPTED_X = 0f;
-        private static readonly float BOMB_EXCEPTED_Y = 0f;
-        private readonly IGame game = new Game();
+        private readonly Pair<double, double> initialPosition = new Pair<double, double>(1.0, 1.0);
+        private readonly Pair<double, double> right = new Pair<double, double>(1.0, 0);
+        private readonly Pair<double, double> left = new Pair<double, double>(-1.0, 0);
 
         [TestMethod]
         public void TestMovement()
         {
-            Pair<double, double> initialPosition = new Pair<double, double>(1.0, 1.0);
-            Pair<double, double> right = new Pair<double, double>(1.0, 0);
-            Pair<double, double> left = new Pair<double, double>(-1.0, 0);
             IEntity player = new Entity(UnibomberGame.Type.BOMBER, initialPosition)
                 .AddComponent(new MovementComponent());
-            game.AddEntity(player); 
 
             player.GetComponent<MovementComponent>().moveBy(right);
             player.GetComponent<MovementComponent>().Update();
 
-            Assert.AreEqual(new Pair<double, double>(1.0 + 1.0 * player.GetSpeed(),1.0), player.Position);
+            Assert.AreEqual(new Pair<double, double>(1.0 + 1.0 * player.GetSpeed(), 1.0), player.Position);
 
             player.GetComponent<MovementComponent>().moveBy(left);
             player.GetComponent<MovementComponent>().Update();
@@ -33,6 +29,50 @@ namespace UnibomerTests
             player.GetComponent<MovementComponent>().Update();
 
             Assert.AreEqual(new Pair<double, double>(1.0 - 1.0 * player.GetSpeed(), 1.0), player.Position);
+        }
+        [TestMethod]
+        public void TestMultipleMovements()
+        {
+            IEntity player = new Entity(UnibomberGame.Type.BOMBER, initialPosition)
+                .AddComponent(new MovementComponent());
+
+            player.GetComponent<MovementComponent>().moveBy(right);
+            player.GetComponent<MovementComponent>().moveBy(left);
+            player.GetComponent<MovementComponent>().moveBy(right);
+            player.GetComponent<MovementComponent>().moveBy(left);
+            player.GetComponent<MovementComponent>().Update();
+
+            Assert.AreEqual(new Pair<double, double>(1.0 - 1.0 * player.GetSpeed(), 1.0), player.Position);
+
+            player.GetComponent<MovementComponent>().moveBy(left);
+            player.GetComponent<MovementComponent>().moveBy(left);
+            player.GetComponent<MovementComponent>().moveBy(left);
+            player.GetComponent<MovementComponent>().moveBy(left);
+            player.GetComponent<MovementComponent>().moveBy(right);
+            player.GetComponent<MovementComponent>().Update();
+
+            Assert.AreEqual(new Pair<double, double>(1.0, 1.0), player.Position);
+        }
+
+        [TestMethod]
+        public void TestDirection()
+        {
+            IEntity player = new Entity(UnibomberGame.Type.BOMBER, initialPosition)
+                .AddComponent(new MovementComponent());
+
+            player.GetComponent<MovementComponent>().moveBy(right);
+            player.GetComponent<MovementComponent>().Update();
+
+            Assert.AreEqual(right, player.GetComponent<MovementComponent>().Direction);
+
+            player.GetComponent<MovementComponent>().moveBy(left);
+            player.GetComponent<MovementComponent>().moveBy(left);
+            player.GetComponent<MovementComponent>().moveBy(left);
+            player.GetComponent<MovementComponent>().moveBy(right);
+            player.GetComponent<MovementComponent>().moveBy(left);
+            player.GetComponent<MovementComponent>().Update();
+
+            Assert.AreEqual(left, player.GetComponent<MovementComponent>().Direction);
         }
 
     }
