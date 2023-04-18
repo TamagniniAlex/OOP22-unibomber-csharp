@@ -9,7 +9,7 @@ namespace UnibomberGame
     internal interface ITimesUp
     {
 
-        Game Game {  set; }
+         Game Game { get; set; }
         /// <summary>
         /// makes it so the walls start closing in
         /// </summary>
