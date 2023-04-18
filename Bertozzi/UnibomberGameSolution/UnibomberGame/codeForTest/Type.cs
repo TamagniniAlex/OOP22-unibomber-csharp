@@ -5,10 +5,13 @@ namespace UnibomberGame
     /// </summary>
     public enum Type
     {
+        PLAYER,
         BOMBER,
         BOMB,
         POWERUP,
-        RISING_WALL
+        DESTRUCTIBLE_WALL,
+        INDESTRUCTIBLE_WALL,
+        RISING_WALL,
     }
 
 }
