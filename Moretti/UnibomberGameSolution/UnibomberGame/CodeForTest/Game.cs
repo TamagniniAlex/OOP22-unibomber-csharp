@@ -19,6 +19,11 @@ namespace UnibomberGame
             Entities.Add(entity);
         }
 
+        /// <inheritdoc />
+        public void RemoveEntity<T>(T entity) where T : IEntity
+        {
+            Entities.Remove(entity);    
+        }
     }
 
 }

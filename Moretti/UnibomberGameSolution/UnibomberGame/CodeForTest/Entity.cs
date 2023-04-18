@@ -11,6 +11,8 @@ namespace UnibomberGame
 
         /// <inheritdoc />
         public Type EntityType { get; set; }
+        /// <inheritdoc />
+        public IGame Game { get; set; }
 
         /// <inheritdoc />
         public Pair<double, double> Position { get; set; }

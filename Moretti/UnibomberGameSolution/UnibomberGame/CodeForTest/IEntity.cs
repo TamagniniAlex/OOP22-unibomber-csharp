@@ -13,6 +13,11 @@ namespace UnibomberGame
         Pair<double, double> Position { get; set; }
 
         /// <summary>
+        /// Set / Get entity Game.
+        /// </summary>
+        IGame Game { get; set; }
+
+        /// <summary>
         /// Get Entity component.
         /// </summary>
         /// <typeparam name="T">component class</typeparam>
