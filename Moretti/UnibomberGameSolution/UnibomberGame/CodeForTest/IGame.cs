@@ -13,6 +13,12 @@ namespace UnibomberGame
         /// <typeparam name="T"></typeparam>
         /// <param name="entity"></param>
         void AddEntity<T>(T entity) where T : IEntity;
+        /// <summary>
+        /// removes entity into the game.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entity"></param>
+        void RemoveEntity<T>(T entity) where T : IEntity;
 
     }
 

@@ -10,12 +10,12 @@ namespace UnibomberGame
         /// <summary>
         /// Set / Get entity Position.
         /// </summary>
-        Pair<float, float> Position { get; set; }
+        Pair<double, double> Position { get; set; }
 
         /// <summary>
-        /// Set / Get entity position.
+        /// Set / Get entity Game.
         /// </summary>
-        Pair<float, float> EntityPosition { get; set; }
+        IGame Game { get; set; }
 
         /// <summary>
         /// Get Entity component.
@@ -35,20 +35,20 @@ namespace UnibomberGame
         /// Return entity speed.
         /// </summary>
         /// <returns>speed</returns>
-        float GetSpeed();
+        double GetSpeed();
 
         /// <summary>
         /// Add speed to Entity.
         /// </summary>
         /// <param name="speedValue">value to add</param>
-        void AddSpeed(float speedValue);
+        void AddSpeed(double speedValue);
 
         /// <summary>
         /// adds position to entity.
         /// </summary>
         /// <param name="position">position to add</param>
 
-        public void addPosition(Pair<float, float> position);
+        public void addPosition(Pair<double, double> position);
     }
 
 }

@@ -7,28 +7,28 @@ namespace UnibomberGame
     public class Entity : IEntity
     {
         private readonly List<IComponent> _components;
-        private Pair<float, float> Position { get; set; } 
-        private float _speed;
+        private double _speed;
+
+        /// <inheritdoc />
+        public Type EntityType { get; set; }
+        /// <inheritdoc />
+        public IGame Game { get; set; }
+
+        /// <inheritdoc />
+        public Pair<double, double> Position { get; set; }
 
         /// <summary>
         /// Constructor set default Entities settings.
         /// </summary>
         /// <param name="type">Entity type</param>
         /// <param name="position">Entity position</param>
-        public Entity(Type type, Pair<float, float> position)
+        public Entity(Type type, Pair<double, double> position)
         {
             EntityType = type;
-            EntityPosition = new Pair<float, float>(0f, 0f);
             Position = position;   
             _components = new List<IComponent>();
             _speed = 0.3f;
         }
-
-        /// <inheritdoc />
-        public Type EntityType { get; set; }
-
-        /// <inheritdoc />
-        public Pair<float, float> EntityPosition { get; set; }
 
         /// <inheritdoc />
         public T? GetComponent<T>() where T : IComponent
@@ -45,20 +45,20 @@ namespace UnibomberGame
         }
 
         /// <inheritdoc />
-        public float GetSpeed()
+        public double GetSpeed()
         {
             return _speed;
         }
 
         /// <inheritdoc />
-        public void AddSpeed(float speed)
+        public void AddSpeed(double speed)
         {
             _speed += speed;
         }
         /// <inheritdoc />
-        public void addPosition(Pair<float,float> position)
+        public void addPosition(Pair<double, double> position)
         {
-            Position = new Pair<float, float>(Position.GetX + position.GetX, Position.GetY + position.GetY);
+            Position = new Pair<double, double>(Position.GetX + position.GetX, Position.GetY + position.GetY);
         }
 
     }
