@@ -24,7 +24,7 @@ namespace UnibomberGame
         /// <inheritdoc />
         public override void Update()
         {   
-            Entity.addPosition(new (_moveBy.GetX, _moveBy.GetY));
+            Entity.AddPosition(new (_moveBy.GetX, _moveBy.GetY));
             UpdateDirection();
             ResetMovement();
         }

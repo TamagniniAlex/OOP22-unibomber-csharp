@@ -48,7 +48,7 @@ namespace UnibomberGame
         /// </summary>
         /// <param name="position">position to add</param>
 
-        public void addPosition(Pair<double, double> position);
+        public void AddPosition(Pair<double, double> position);
     }
 
 }

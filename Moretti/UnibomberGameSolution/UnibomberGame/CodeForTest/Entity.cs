@@ -57,7 +57,7 @@ namespace UnibomberGame
             _speed += speed;
         }
         /// <inheritdoc />
-        public void addPosition(Pair<double, double> position)
+        public void AddPosition(Pair<double, double> position)
         {
             Position = new Pair<double, double>(Position.GetX + position.GetX, Position.GetY + position.GetY);
         }
