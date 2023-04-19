@@ -46,8 +46,6 @@ namespace UnibomberGame
             _moveBy = new Pair<double, double>(0, 0);
         }
 
-
-
         /// <summary>
         /// method that upsates the direction to move towards
         /// </summary>
