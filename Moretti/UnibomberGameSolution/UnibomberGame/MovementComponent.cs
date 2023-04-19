@@ -18,43 +18,43 @@ namespace UnibomberGame
     public class MovementComponent : AbstractComponent
     {
         readonly double POSITIVE_MOVE = 1;
-        private Pair<double, double> _moveBy = new Pair<double, double>(0f, 0f);
-        public Pair<double, double> Direction { get; set; } = new Pair<double, double>(0,0);
+        private Pair<double, double> _moveBy = new (0f, 0f);
+        public Pair<double, double> Direction { get; set; } = new (0,0);
 
         /// <inheritdoc />
         public override void Update()
-        {
-            this.Entity.addPosition(new Pair<double, double>(_moveBy.GetX, _moveBy.GetY));
-            updateDirection();
-            resetMovement();
+        {   
+            Entity.addPosition(new (_moveBy.GetX, _moveBy.GetY));
+            UpdateDirection();
+            ResetMovement();
         }
         /// <summary>
         /// given the movement, updates the direction the entity is facing.
         /// </summary>
-        private void updateDirection()
+        private void UpdateDirection()
         {
             int directionX = _moveBy.GetX == 0 ? 0 : _moveBy.GetX > 0 ? 1 : -1;
             int directionY = _moveBy.GetY == 0 ? 0 : _moveBy.GetY > 0 ? 1 : -1;
-            this.Direction = new Pair<double, double>(directionX, directionY);
+            Direction = new (directionX, directionY);
         }
 
         /// <summary>
         /// resets the current movement
         /// </summary>
-        private void resetMovement()
+        private void ResetMovement()
         {
-            _moveBy = new Pair<double, double>(0, 0);
+            _moveBy = new (0, 0);
         }
 
         /// <summary>
         /// method that upsates the direction to move towards
         /// </summary>
         /// <param name="direction">the direction to move towards</param>
-        public void moveBy(Pair<double, double> direction)
+        public void MoveBy(Pair<double, double> direction)
         {
-            _moveBy = new Pair<double, double>(
-                    direction.GetX * this.Entity.GetSpeed() * POSITIVE_MOVE,
-                    direction.GetY * this.Entity.GetSpeed() * POSITIVE_MOVE);
+            _moveBy = new (
+                    direction.GetX * Entity.GetSpeed() * POSITIVE_MOVE,
+                    direction.GetY * Entity.GetSpeed() * POSITIVE_MOVE);
         }
 
     }

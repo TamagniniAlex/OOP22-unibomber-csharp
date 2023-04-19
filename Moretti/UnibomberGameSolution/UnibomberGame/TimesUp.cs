@@ -25,6 +25,7 @@ namespace UnibomberGame
         {
             _isStarted = false;
             _isDone = false;
+            _raisedWalls = new bool[0, 0];
             _currentDirection = new Pair<int, int>(1, 0);
             _currentPosition = new Pair<int, int>(-1, 0);
             Game = game;
@@ -42,13 +43,13 @@ namespace UnibomberGame
         {
             if (_isStarted && !_isDone)
             {
-                Pair<int, int> newPosition = new Pair<int, int>(_currentDirection.GetX + _currentPosition.GetX,
+                Pair<int, int> newPosition = new (_currentDirection.GetX + _currentPosition.GetX,
                           _currentDirection.GetY + _currentPosition.GetY);
                 if (!Utilities.IsBetween(newPosition.GetX, 0, _startX)
                           || !Utilities.IsBetween(newPosition.GetY, 0, _startY)
                           || _raisedWalls[newPosition.GetX, newPosition.GetY])
                 {
-                    _currentDirection = getNextClockwise(_currentDirection);
+                    _currentDirection = GetNextClockwise(_currentDirection);
                     newPosition = new Pair<int, int>(_currentDirection.GetX + _currentPosition.GetX,
                               _currentDirection.GetY + _currentPosition.GetY);
                     if (_raisedWalls[newPosition.GetX, newPosition.GetY])
@@ -61,7 +62,7 @@ namespace UnibomberGame
                 _currentPosition = newPosition;
             }
         }
-        private Pair<int, int> getNextClockwise(Pair<int, int> direction)
+        private static Pair<int, int> GetNextClockwise(Pair<int, int> direction)
         {
             Pair<int, int> LEFT = new (-1, 0);
             Pair<int, int> RIGHT = new (1, 0);

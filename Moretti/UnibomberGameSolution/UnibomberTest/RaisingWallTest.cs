@@ -2,17 +2,16 @@
 using UnibomberGame;
 
 /// disabled warning CS8602 because Components will never be null
-#pragma warning disable CS8602
 namespace UnibomerTests
 {
     [TestClass]
     public class RaisingTest
     {
-        private Game game;
-        private TimesUp timesUp;
+        private Game game = new();
+        private TimesUp timesUp = new (new Game());
         private readonly int DimensionX = 10, DimensionY = 10;
 
-        private void initializeVariables()
+        private void InitializeVariables()
         {
             game = new Game();
             timesUp = new TimesUp(game);
@@ -21,7 +20,7 @@ namespace UnibomerTests
         [TestMethod]
         public void RisingTest()
         {
-            initializeVariables();
+            InitializeVariables();
             timesUp.Start(DimensionX, DimensionY);
             timesUp.Update();
             timesUp.Update();
@@ -34,10 +33,10 @@ namespace UnibomerTests
         }
 
         [TestMethod]
-        public void checkBorder()
+        public void CheckBorder()
         {
 
-            initializeVariables();
+            InitializeVariables();
             timesUp.Start(DimensionX, DimensionY);
             for(int i = 0; i < 15; i++)
             {
