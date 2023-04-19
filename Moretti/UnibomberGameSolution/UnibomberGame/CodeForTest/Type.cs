@@ -8,6 +8,7 @@ namespace UnibomberGame
         BOMBER,
         BOMB,
         WALL,
+        RAISING_WALL,
     }
 
 }

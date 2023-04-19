@@ -9,7 +9,7 @@ namespace UnibomberGame
         {
             public static class Collision
             {
-                private static Action<IEntity, IEntity> collide = (entity, e) =>
+                private readonly static Action<IEntity, IEntity> collide = (entity, e) =>
                 {
                     if (e.EntityType.Equals(Type.POWERUP))
                     {
@@ -23,6 +23,10 @@ namespace UnibomberGame
                         Extension.CollisonWall(entity, e);
                     }
                 };
+                public static Action<IEntity, IEntity> GetCollide()
+                {
+                    return collide;
+                }
             }
         }
         public static void CollisonWall(IEntity entity, IEntity e)
@@ -31,29 +35,18 @@ namespace UnibomberGame
             float thisY = (float)Math.Round(entity.EntityPosition.GetY);
             float eX = (float)Math.Round(e.EntityPosition.GetX);
             float eY = (float)Math.Round(e.EntityPosition.GetY);
-            bool isOccupied = entity.Game.GetField()
-                .Any(entry => entry.Key.Equals(new KeyValuePair<int, int>(
-                    (int)Math.Round(thisX) + entity.GetComponent<MovementComponent>().Get().GetDirection().GetX(),
-                    (int)Math.Round(thisY) + entity.GetComponent<MovementComponent>().Get().GetDirection().GetY()))));
-            if (!isOccupied)
+            if (thisX != eX || thisY != eY)
             {
-                if (thisX != eX || thisY != eY)
-                {
-                    entity.EntityPosition = (new Pair<float, float>(thisX, thisY));
-                }
+                entity.EntityPosition = new Pair<float, float>(thisX, thisY);
             }
-            else
+            if (thisX == eX && thisY != eY)
             {
-                if (thisX == eX && thisY != eY)
-                {
-                    entity.EntityPosition = (new Pair<float, float>(entity.EntityPosition.GetX, thisY));
-                }
-                else if (thisX != eX && thisY == eY)
-                {
-                    entity.EntityPosition = (new Pair<float, float>(thisX, entity.EntityPosition.GetY));
-                }
+                entity.EntityPosition = new Pair<float, float>(entity.EntityPosition.GetX, thisY);
+            }
+            else if (thisX != eX && thisY == eY)
+            {
+                entity.EntityPosition = new Pair<float, float>(thisX, entity.EntityPosition.GetY);
             }
         }
-
     }
 }

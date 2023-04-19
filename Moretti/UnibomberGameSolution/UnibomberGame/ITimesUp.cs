@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace UnibomberGame
 {
-    internal interface ITimesUp
+    public interface ITimesUp
     {
 
-         Game Game { get; set; }
+        Game Game { get; set; }
         /// <summary>
         /// makes it so the walls start closing in
         /// </summary>
-        void start(int sizeX, int sizeY);
+        void Start(int sizeX, int sizeY);
 
         /// <summary>
         /// should be called every frame. Places a new wall inside the game
         /// </summary>
-        void update();
+        void Update();
     }
 }

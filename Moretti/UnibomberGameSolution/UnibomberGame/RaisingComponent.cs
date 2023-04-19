@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UnibomberGame
 {
-    internal class RaisingComponent : AbstractComponent
+    public class RaisingComponent : AbstractComponent
     {
 
         /// <summary>
@@ -15,8 +15,11 @@ namespace UnibomberGame
         /// </summary>
         public override void Update()
         {
-            this.Entity.Game.AddEntity(new Entity(Type.WALL,this.Entity.Position));
-            this.Entity.Game.RemoveEntity(this.Entity);
+            if(Entity != null)
+            {
+                Entity.Game.AddEntity(new Entity(Type.WALL, Entity.Position));
+                Entity.Game.RemoveEntity(Entity);
+            }
         }
     }
 
