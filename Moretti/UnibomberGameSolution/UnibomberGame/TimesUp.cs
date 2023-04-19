@@ -89,10 +89,7 @@ namespace UnibomberGame
             Pair<int, int> RIGHT = new (1, 0);
             Pair<int, int> UP = new (0,-1);
             Pair<int, int> DOWN = new(0,1);
-            if (direction.GetX > 0) return DOWN;
-            else if (direction.GetX < 0) return UP;
-            else if (direction.GetY > 0) return LEFT;
-            else  return RIGHT;
+            return direction.GetX > 0 ? DOWN : direction.GetX < 0 ? UP : direction.GetY > 0 ? LEFT : RIGHT;
         }
     }
 }

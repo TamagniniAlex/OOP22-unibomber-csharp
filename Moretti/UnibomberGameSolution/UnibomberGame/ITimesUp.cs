@@ -9,6 +9,9 @@ namespace UnibomberGame
     public interface ITimesUp
     {
 
+        /// <summary>
+        /// get and set of game
+        /// </summary>
         Game Game { get; set; }
         /// <summary>
         /// makes it so the walls start closing in

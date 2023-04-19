@@ -21,14 +21,14 @@ namespace UnibomerTests
             player.GetComponent<MovementComponent>().MoveBy(right);
             player.GetComponent<MovementComponent>().Update();
 
-            Assert.AreEqual(new Pair<double, double>(1.0 + 1.0 * player.GetSpeed(), 1.0), player.Position);
+            Assert.AreEqual(new Pair<double, double>(1.0 + (1.0 * player.GetSpeed()), 1.0), player.Position);
 
             player.GetComponent<MovementComponent>().MoveBy(left);
             player.GetComponent<MovementComponent>().Update();
             player.GetComponent<MovementComponent>().MoveBy(left);
             player.GetComponent<MovementComponent>().Update();
 
-            Assert.AreEqual(new Pair<double, double>(1.0 - 1.0 * player.GetSpeed(), 1.0), player.Position);
+            Assert.AreEqual(new Pair<double, double>(1.0 - (1.0 * player.GetSpeed()), 1.0), player.Position);
         }
         [TestMethod]
         public void TestMultipleMovements()
@@ -42,7 +42,7 @@ namespace UnibomerTests
             player.GetComponent<MovementComponent>().MoveBy(left);
             player.GetComponent<MovementComponent>().Update();
 
-            Assert.AreEqual(new Pair<double, double>(1.0 - 1.0 * player.GetSpeed(), 1.0), player.Position);
+            Assert.AreEqual(new Pair<double, double>(1.0 - (1.0 * player.GetSpeed()), 1.0), player.Position);
 
             player.GetComponent<MovementComponent>().MoveBy(left);
             player.GetComponent<MovementComponent>().MoveBy(left);

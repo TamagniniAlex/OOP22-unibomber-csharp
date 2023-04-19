@@ -19,6 +19,10 @@ namespace UnibomberGame
     {
         readonly double POSITIVE_MOVE = 1;
         private Pair<double, double> _moveBy = new (0f, 0f);
+
+        /// <summary>
+        /// get and set of direction
+        /// </summary>
         public Pair<double, double> Direction { get; set; } = new (0,0);
 
         /// <inheritdoc />
@@ -28,6 +32,7 @@ namespace UnibomberGame
             UpdateDirection();
             ResetMovement();
         }
+
         /// <summary>
         /// given the movement, updates the direction the entity is facing.
         /// </summary>
