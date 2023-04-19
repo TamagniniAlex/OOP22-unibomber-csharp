@@ -21,6 +21,10 @@ namespace UnibomberGame
         /// <inheritdoc />
         public Game Game { get; set; }
 
+        /// <summary>
+        /// constructor of timesUp
+        /// </summary>
+        /// <param name="game">the game associated to the timesUp</param>
         public TimesUp(Game game)
         {
             _isStarted = false;
@@ -31,6 +35,12 @@ namespace UnibomberGame
             Game = game;
             Start(10, 10);
         }
+
+        /// <summary>
+        /// Times up is started
+        /// </summary>
+        /// <param name="sizeX">the horizontal size of the game</param>
+        /// <param name="sizeY">the vertical size of the game</param>
         public void Start(int sizeX, int sizeY)
         {
             _raisedWalls = new bool[sizeX, sizeY];
@@ -39,6 +49,10 @@ namespace UnibomberGame
             _startY = sizeY;
         }
 
+
+        /// <summary>
+        /// Should be called every frame, updates the timesUp
+        /// </summary>
         public void Update()
         {
             if (_isStarted && !_isDone)
@@ -62,6 +76,13 @@ namespace UnibomberGame
                 _currentPosition = newPosition;
             }
         }
+
+        /// <summary>
+        /// Times up is started
+        /// </summary>
+        /// <param name="sizeX">the horizontal size of the game</param>
+        /// <param name="sizeY">the vertical size of the game</param>
+        /// <returns>the next value clockWise</returns>
         private static Pair<int, int> GetNextClockwise(Pair<int, int> direction)
         {
             Pair<int, int> LEFT = new (-1, 0);

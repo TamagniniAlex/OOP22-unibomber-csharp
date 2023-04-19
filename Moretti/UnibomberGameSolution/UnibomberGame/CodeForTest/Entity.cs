@@ -28,6 +28,7 @@ namespace UnibomberGame
             Position = position;   
             _components = new List<IComponent>();
             _speed = 0.3f;
+            Game = new Game();
         }
 
         /// <inheritdoc />

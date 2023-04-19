@@ -13,7 +13,7 @@ namespace UnibomberGame
 {
 
     /// <summary>
-    /// This component manage bomb placement.
+    /// This component manages the entity Movement
     /// </summary>
     public class MovementComponent : AbstractComponent
     {
