@@ -3,14 +3,14 @@ using System.Drawing;
 /// disabled warning CS8602 because Components will never be null in this case
 namespace UnibomberGame
 {
-    internal class CollisionComponent : AbstractComponent
+    public class CollisionComponent : AbstractComponent
     {
         private readonly bool isSolid;
         private bool isOver;
         private RectangleF hitbox;
         private readonly float x, y;
         private int width, height;
-        private readonly Action<IEntity, IEntity> action;
+        private readonly Action<IEntity, IEntity>? action;
         private const int TILE_SIZE = 48;
         private const int DEFAULT_TILES_WIDTH = 15;
         private const int DEFAULT_TILES_HEIGHT = 19;
@@ -28,7 +28,7 @@ namespace UnibomberGame
         }
 
         public CollisionComponent(bool isSolid, bool isOver, int x, int y,
-                                  Action<IEntity, IEntity> action)
+                                  Action<IEntity, IEntity>? action)
         {
             this.isSolid = isSolid;
             this.isOver = isOver;
@@ -61,7 +61,7 @@ namespace UnibomberGame
         public void CheckCollisions()
         {
             IEntity? entity = this.Entity;
-            if (entity.EntityType.Equals(Type.BOMBER) || entity.EntityType.Equals(Type.BOMB))
+            if (entity.EntityType.Equals(Type.PLAYER) || entity.EntityType.Equals(Type.BOMB))
             {
                 entity.Game.Entities
                     .Where(e => !e.Equals(entity))
@@ -104,7 +104,7 @@ namespace UnibomberGame
         private void ChangeBombOver()
         {
             IEntity? player = this.Entity;
-            if (player.EntityType.Equals(Type.BOMBER))
+            if (player.EntityType.Equals(Type.PLAYER))
             {
                 CollisionComponent? playerCollision = player.GetComponent<CollisionComponent>();
                 player.Game.Entities
