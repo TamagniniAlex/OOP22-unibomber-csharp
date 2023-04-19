@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnibomberGame
 {
-    internal interface ITimesUp
+    public interface ITimesUp
     {
 
         Game Game { get; set; }
