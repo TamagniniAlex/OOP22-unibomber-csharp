@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -62,10 +63,14 @@ namespace UnibomberGame
         }
         private Pair<int, int> getNextClockwise(Pair<int, int> direction)
         {
-            int x = direction.GetY > 0 ? 1 : direction.GetY < 0 ? -1 : 0;
-            int y = direction.GetX > 0 ? -1 : direction.GetX < 0 ? 1 : 0;
-
-            return new Pair<int, int>(x, y);
+            Pair<int, int> LEFT = new (-1, 0);
+            Pair<int, int> RIGHT = new (1, 0);
+            Pair<int, int> UP = new (0,-1);
+            Pair<int, int> DOWN = new(0,1);
+            if (direction.GetX > 0) return DOWN;
+            else if (direction.GetX < 0) return UP;
+            else if (direction.GetY > 0) return LEFT;
+            else  return RIGHT;
         }
     }
 }
